@@ -1,0 +1,84 @@
+{
+  "info": {
+    "_postman_id": "e40c07b6-3056-4766-9b69-0f03db72362a",
+    "name": "Travel Organization App API Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51945363",
+    "_collection_link": "https://go.postman.co/collection/51945363-e40c07b6-3056-4766-9b69-0f03db72362a?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": []
+    },
+    {
+      "name": "Trips",
+      "item": [
+        {
+          "name": "GET All Trips",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "Single Trips",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "Single Trips Copy",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "POST Create Trip",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH Update Trip",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Polls",
+      "item": []
+    },
+    {
+      "name": "Messages",
+      "item": []
+    },
+    {
+      "name": "Activities",
+      "item": []
+    },
+    {
+      "name": "Itinerary",
+      "item": []
+    }
+  ]
+}
