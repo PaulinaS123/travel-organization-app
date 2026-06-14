@@ -119,26 +119,10 @@ Security implementation includes:
 ```text
 travel-organization-app/
 │
-├── docs/
-│   ├── week04-update.md
-│   ├── week05-update.md
-│   ├── week06-update.md
-│   ├── week07-update.md
-│   ├── week08-update.md
-│   ├── week09-update.md
-│   └── week10-update.md
-│
-├── frontend/
-│   ├── src/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   └── assets/
-│   └── package.json
-│
-├── screenshots/
-│
-├── sql/
-│
+├── docs/          # Weekly development updates and project documentation
+├── frontend/      # React + Vite frontend application
+├── screenshots/   # Application and API testing screenshots
+├── sql/           # Database schema, sample data, and RLS policies
 └── README.md
 ```
 
