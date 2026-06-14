@@ -8,12 +8,17 @@ function TripDetails() {
 
   const [trip, setTrip] = useState(null);
 
+  const [activities, setActivities] = useState([]);
+  const [itineraryItems, setItineraryItems] = useState([]);
+
   const [title, setTitle] = useState("");
   const [destination, setDestination] = useState("");
   const [description, setDescription] = useState("");
 
   useEffect(() => {
     fetchTrip();
+    fetchActivities();
+    fetchItinerary();
   }, []);
 
   async function fetchTrip() {
@@ -33,6 +38,35 @@ function TripDetails() {
     setTitle(data.title || "");
     setDestination(data.destination || "");
     setDescription(data.description || "");
+  }
+
+  async function fetchActivities() {
+    const { data, error } = await supabase
+      .from("activities")
+      .select("*")
+      .eq("trip_id", id);
+
+    if (error) {
+      console.error(error);
+      return;
+    }
+
+    setActivities(data || []);
+  }
+
+  async function fetchItinerary() {
+    const { data, error } = await supabase
+      .from("itinerary")
+      .select("*")
+      .eq("trip_id", id)
+      .order("day_number");
+
+    if (error) {
+      console.error(error);
+      return;
+    }
+
+    setItineraryItems(data || []);
   }
 
   async function updateTrip() {
@@ -117,6 +151,57 @@ function TripDetails() {
 
       <br />
       <br />
+
+      <hr />
+
+      <h2>Activities</h2>
+
+      {activities.length === 0 ? (
+        <p>No activities for this trip.</p>
+      ) : (
+        activities.map((activity) => (
+          <div className="trip-card" key={activity.id}>
+            <h3>{activity.title}</h3>
+
+            <p>
+              <strong>Location:</strong> {activity.location}
+            </p>
+
+            <p>
+              <strong>Description:</strong> {activity.description}
+            </p>
+          </div>
+        ))
+      )}
+
+      <hr />
+
+      <h2>Itinerary</h2>
+
+      {itineraryItems.length === 0 ? (
+        <p>No itinerary items for this trip.</p>
+      ) : (
+        itineraryItems.map((item) => (
+          <div className="trip-card" key={item.id}>
+            <h3>Day {item.day_number}</h3>
+
+            <p>
+              <strong>{item.title}</strong>
+            </p>
+
+            <p>{item.details}</p>
+
+            <p>
+              <strong>Scheduled:</strong>{" "}
+              {item.scheduled_time
+                ? new Date(item.scheduled_time).toLocaleString()
+                : "No time"}
+            </p>
+          </div>
+        ))
+      )}
+
+      <hr />
 
       <button onClick={updateTrip}>Save Changes</button>
 
